@@ -9,6 +9,7 @@ const HW2Router = require("./be_32_hw2");
 const BE3Router = require("./be3_assignment1");
 const BE4Router = require("./be_41_hw1");
 const BE5Router = require("./be_42_hw2");
+const BE4Assignment2Router = require("./be4_assignment2");
 
 // const cars = [{ id: 1, make: "Toyota", model: "Camry", year: 2022 }];
 
@@ -39,6 +40,7 @@ app.use(HW2Router);
 app.use(BE3Router);
 app.use(BE4Router);
 app.use(BE5Router);
+app.use(BE4Assignment2Router);
 
 app.delete("/cars/:id", (req, res) => {
   const carId = parseInt(req.params.id);
