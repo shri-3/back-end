@@ -38,7 +38,6 @@ app.get("/books", async (req, res) => {
  */
 app.get("/books/:title", async (req, res) => {
   const bookTitle = req.params.title;
-  console.log(bookTitle);
 
   if (!bookTitle) {
     return res.status(400).json({ error: "Invalid book title." });
@@ -64,14 +63,13 @@ app.get("/books/:title", async (req, res) => {
  */
 app.get("/books/author/:author", async (req, res) => {
   const bookAuthor = req.params.author;
-  console.log(bookAuthor);
 
   if (!bookAuthor) {
     return res.status(400).json({ error: "Invalid book author." });
   } else {
     try {
-      const booksByAuthor = await Books.find({ author: bookAuthor });
-      if (booksByAuthor.length > 0) {
+      const booksByAuthor = await Books.findOne({ author: bookAuthor });
+      if (booksByAuthor) {
         res.json(booksByAuthor);
       } else {
         res.status(404).json({ error: "No books found for the given author." });
@@ -227,7 +225,6 @@ const books = [
 
 app.delete("/books/:id", (req, res) => {
   const bookId = parseInt(req.params.id);
-  console.log(bookId);
 
   const bookIndex = books.findIndex((book) => book.id === bookId);
 
@@ -272,7 +269,6 @@ const todos = [
 
 app.delete("/todos/:id", (req, res) => {
   const todoId = parseInt(req.params.id);
-  console.log(todoId);
 
   const todoIndex = todos.findIndex((todo) => todo.id === todoId);
 

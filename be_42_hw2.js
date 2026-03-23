@@ -53,7 +53,6 @@ app.get("/hotels", async (req, res) => {
  */
 app.delete("/hotels/:id", async (req, res) => {
   const hotelId = req.params.id;
-  console.log(hotelId);
 
   if (!hotelId) {
     return res.status(400).json({ error: "Invalid hotel ID." });
@@ -82,7 +81,6 @@ app.delete("/hotels/:id", async (req, res) => {
 app.put("/hotels/:id", async (req, res) => {
   const hotelId = req.params.id;
   const updatedHotel = req.body;
-  console.log(hotelId, updatedHotel);
 
   if (!hotelId) {
     return res.status(400).json({ error: "Invalid hotel ID." });

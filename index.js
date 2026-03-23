@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
@@ -10,6 +11,8 @@ const BE3Router = require("./be3_assignment1");
 const BE4Router = require("./be_41_hw1");
 const BE5Router = require("./be_42_hw2");
 const BE4Assignment2Router = require("./be4_assignment2");
+const refrenceRouter = require("./refrence");
+const meetAppRouter = require("./meetApp");
 
 // const cars = [{ id: 1, make: "Toyota", model: "Camry", year: 2022 }];
 
@@ -31,9 +34,8 @@ const cars = [
   { id: 15, make: "Volkswagen", model: "Golf", year: 2022 },
 ];
 
-// app.get("/", (req, res) => {
-//   res.send("Hello, Express JS!");
-// });
+// Enable CORS for a specific origin
+app.use(cors());
 app.use(appRouter);
 app.use(HW1Router);
 app.use(HW2Router);
@@ -41,6 +43,8 @@ app.use(BE3Router);
 app.use(BE4Router);
 app.use(BE5Router);
 app.use(BE4Assignment2Router);
+app.use(refrenceRouter);
+app.use(meetAppRouter);
 
 app.delete("/cars/:id", (req, res) => {
   const carId = parseInt(req.params.id);

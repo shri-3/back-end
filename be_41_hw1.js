@@ -50,7 +50,6 @@ app.get("/restaurants", async (req, res) => {
  */
 app.delete("/restaurants/:id", async (req, res) => {
   const restaurantId = req.params.id;
-  console.log(restaurantId);
 
   if (!restaurantId) {
     return res.status(400).json({ error: "Invalid restaurant ID." });
@@ -80,7 +79,6 @@ app.delete("/restaurants/:id", async (req, res) => {
 app.put("/restaurants/:id", async (req, res) => {
   const restaurantId = req.params.id;
   const updatedRestaurant = req.body;
-  console.log(restaurantId, updatedRestaurant);
 
   if (!restaurantId) {
     return res.status(400).json({ error: "Invalid restaurant ID." });

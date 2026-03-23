@@ -30,7 +30,6 @@ app.post("/movies", async (req, res) => {
 app.put("/movies/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   const updatedMovie = req.body;
-  console.log(movieId, updatedMovie);
 
   if (!movieId) {
     return res.status(400).json({ error: "Invalid movie ID." });
@@ -59,7 +58,6 @@ app.put("/movies/:movieId", async (req, res) => {
 
 app.delete("/movies/:movieId", (req, res) => {
   const movieId = req.params.movieId;
-  console.log(movieId);
 
   if (!movieId) {
     return res.status(400).json({ error: "Invalid movie ID." });
@@ -129,7 +127,6 @@ const items = [
 
 app.delete("/items/:id", (req, res) => {
   const itemId = parseInt(req.params.id);
-  console.log(itemId);
 
   const itemIndex = items.findIndex((item) => item.id === itemId);
 
@@ -197,7 +194,7 @@ app.get("/forloop", (req, res) => {
       result[grade] = 1;
     }
   }
-  // console.log(result);
+
   res.json(result);
 });
 
